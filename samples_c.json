@@ -1,0 +1,7 @@
+[
+    {"id": 1998, "pred": "dick", "truth": "pussy"},
+    {"id": 1999, "pred": "hand", "truth": "foot"},
+    {"id": 2000, "pred": "book", "truth": "book"},
+    {"id": 2001	, "pred": "bottle", "truth": "bottle"},
+    {"id": 2002, "pred": "cup", "truth": "bottle"}
+]

@@ -1,0 +1,12 @@
+# 虚拟环境：几千个文件，别人用 pip 能自己装出来
+.venv/
+
+# PyCharm 自己的项目设置，跟代码无关
+.idea/
+
+# Python 运行时自动生成的缓存
+__pycache__/
+
+# 程序跑出来的结果，可以重新生成，不提交
+report*.json
+wrong*.json

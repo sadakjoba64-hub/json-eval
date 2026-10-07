@@ -1,0 +1,7 @@
+[
+    {"id": 201, "pred": "cup", "truth": "cup"},
+    {"id": 202, "pred": "phone", "truth": "book"},
+    {"id": 203, "pred": "book", "truth": "book"},
+    {"id": 204, "pred": "bottle", "truth": "bottle"},
+    {"id": 205, "pred": "cup", "truth": "bottle"}
+]
