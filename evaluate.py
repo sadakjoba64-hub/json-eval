@@ -1,26 +1,7 @@
 import json
 from pathlib import Path
+from metrics import evaluate
 BASE_DIR = Path(__file__).resolve().parent
-def evaluate(samples):
-    if len(samples) == 0:
-        return {
-            'accuracy': None,
-            'wrong_ids':[]
-        }
-
-    correct = 0
-    wrong_ids = []
-
-    for sample in samples:
-        if sample["pred"] == sample["truth"]:
-            correct += 1
-        else:
-            wrong_ids.append(sample["id"])
-
-    return {
-        "accuracy": correct / len(samples),
-        "wrong_ids": wrong_ids
-    }
 
 names = ["samples", "samples_b","samples_c"]                # 要评估的数据文件名列表（不含 .json）
 for name in names:                              # 每一轮从列表里取一个名字，放进变量 name
