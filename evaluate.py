@@ -1,7 +1,7 @@
 import json
 import argparse                   # Python 自带：读取命令行参数
 from pathlib import Path
-from metrics import evaluate
+from metrics import evaluate, count_wrong_by_class
 BASE_DIR = Path(__file__).resolve().parent
 
 parser = argparse.ArgumentParser(description="评估 JSON 数据的正确率")   # 创建一个“参数解析器”
@@ -19,6 +19,7 @@ for name in names:                              # 每一轮从列表里取一个
     report = evaluate(samples)
     report["total"]=len(samples)
     print(report)
+    print("按类别的错误数：", count_wrong_by_class(samples))
 
     with open(BASE_DIR/f"report_{name}.json", "w", encoding="utf-8") as file:
         json.dump(report, file, indent=4)
@@ -34,6 +35,5 @@ for name in names:                              # 每一轮从列表里取一个
     with open(BASE_DIR/f"wrong_{name}.json", "w", encoding="utf-8") as file:
         json.dump(wrong_samples, file, indent=4)
 
-    print(f"错误样本已保存到 wrong_{name}.json")
+  #  print(f"错误样本已保存到 wrong_{name}.json")
 
-    print(parser)
