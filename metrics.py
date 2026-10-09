@@ -1,3 +1,4 @@
+from collections import Counter    # 从 collections 工具箱拿出 Counter
 def evaluate(samples):
     if len(samples) == 0:
         return {
@@ -18,13 +19,16 @@ def evaluate(samples):
         "accuracy": correct / len(samples),
         "wrong_ids": wrong_ids
     }
-
-
-
+#def count_wrong_by_class(samples):
+    #counts = {}                                    # 空字典：真实类别 → 错了几次
+    #for sample in samples:                         # 从列表里一条条取样本（每条是字典）
+        #if sample["pred"] != sample["truth"]:      # 只数错的
+            #label = sample["truth"]                # 取这条的真实类别，例如 "cup"
+            #counts[label] = counts.get(label, 0) + 1
+    #return counts                                  # 把记账本交回去
 def count_wrong_by_class(samples):
-    counts = {}                                    # 空字典：真实类别 → 错了几次
-    for sample in samples:                         # 从列表里一条条取样本（每条是字典）
-        if sample["pred"] != sample["truth"]:      # 只数错的
-            label = sample["truth"]                # 取这条的真实类别，例如 "cup"
-            counts[label] = counts.get(label, 0) + 1
-    return counts                                  # 把记账本交回去
+    wrong_labels = []                              # 空列表：收集错的样本的真实类别
+    for sample in samples:
+        if sample["pred"] != sample["truth"]:      # 只要错的
+            wrong_labels.append(sample["truth"])   # 把真实类别放进列表，例如 "cup"
+    return dict(Counter(wrong_labels))             # Counter 数好 → dict 变回普通字典

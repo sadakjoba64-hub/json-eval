@@ -18,9 +18,11 @@ for name in names:                              # 每一轮从列表里取一个
 
     report = evaluate(samples)
     report["total"]=len(samples)
+    report["wrong_by_class"] = count_wrong_by_class(samples)
     print(report)
-    print("按类别的错误数：", count_wrong_by_class(samples))
 
+    #print("按类别的错误数：", count_wrong_by_class(samples))
+    print("按类别的错误数：", report["wrong_by_class"])   # 从 report 里取，不重新算
     with open(BASE_DIR/f"report_{name}.json", "w", encoding="utf-8") as file:
         json.dump(report, file, indent=4)
 
@@ -35,5 +37,5 @@ for name in names:                              # 每一轮从列表里取一个
     with open(BASE_DIR/f"wrong_{name}.json", "w", encoding="utf-8") as file:
         json.dump(wrong_samples, file, indent=4)
 
-  #  print(f"错误样本已保存到 wrong_{name}.json")
+    print(f"错误样本已保存到 wrong_{name}.json")
 
