@@ -10,3 +10,6 @@ __pycache__/
 # 程序跑出来的结果，可以重新生成，不提交
 report*.json
 wrong*.json
+
+# 1.7 调试练习副本（故意埋了 bug），不上传
+debug_practice/
